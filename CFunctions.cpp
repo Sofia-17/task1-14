@@ -1,6 +1,6 @@
 /*
  * CFunctions.cpp
- * 8. Определить класс CVector для работы с вектором вещественных
+ * 14. Определить класс CVector для работы с вектором вещественных
  * чисел. Длина вектора задается в конструкторе класса. В классе
  * должны быть определены необходимые конструкторы, деструктор, операторы сло-
  * жения, вычитания, скалярного умножения.
@@ -9,6 +9,7 @@
  * В отдельном файле должен быть написан тест на данный класс.
  *     
  */
+ 
  
 #include<iostream>
 #include<fstream>
@@ -72,7 +73,7 @@ std::ifstream finput;
     cin.sync(); cin.get(); throw -1;
    }
    
-       bool b; float k=0; int n=0;
+       bool b; unsigned short int k=0; int n=0;
        char s[15]; string str;
      //for(int i=0;!(finput.eof());i++)
      //if ((fgets(mystring[i], 100, f) != NULL) ) // считать символы из файла
@@ -96,9 +97,9 @@ std::ifstream finput;
                     }
       //cout<<"xxx";
       for(int j=0;(ss>>k)&&(j<n);j++)
-      {//(*v[i])[j]=k; 
-      (*v[i]).setPos(j,k);
-      //cout<<(*v[i])[j]<<" ";
+      {
+       if(k>9) {cout<<"WRONG DATA! Цифра принимает значение от 0 до 9.\n"; finput.close();delete[]v;throw -1;}
+       (*v[i]).setPos(j,k);
       }
       //cout<<endl;
       //if(finput.eof()){break;}
@@ -125,7 +126,7 @@ int CVektor0::output(const char *FileName)
    }
    foutput.open(OutFile, ios::out | ios::app);
        for(size_t i=0;i<n;i++){foutput<<ptrArr[i]<<" ";} 
-       foutput << endl;
+       foutput<<endl;
        //cout<<*this;
           
      //  lk:
